@@ -1,60 +1,72 @@
 <template>
-    <div  class="form-group mx-auto">
-      <h2>Formulario de Datos</h2>
-      <form @submit.prevent="submitForm" ref="formulario">
-        <label>Nombre:</label>
-        <input type="text" v-model="nombre" required class="form-input">
-        <br>
-  
-        <label>Email:</label>
-        <input type="email" v-model="email" required class="form-input">
-        <br>
-  
-        <label>Edad:</label>
-        <input type="number" v-model="edad" min="0" required class="form-input">
-        <br>
-  
-        <label>Teléfono:</label>
-        <input type="tel" v-model="telefono" pattern="[0-9]{10}" required class="form-input">
-        <br>
-  
-        <button type="submit" class="form-button">Enviar</button>
-      </form>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'FormularioVue',
-    data() {
-      return {
-        nombre: '',
-        email: '',
-        edad: '',
-        telefono: ''
-      };
-    },
-    methods: {
-      submitForm() {
-        if (this.$refs.formulario.checkValidity()) {
-          this.$emit('form-submit', {
-            nombre: this.nombre,
-            email: this.email,
-            edad: this.edad,
-            telefono: this.telefono
-          });
-          this.resetForm();
-        }
-      },
-      resetForm() {
-        this.nombre = '';
-        this.email = '';
-        this.edad = '';
-        this.telefono = '';
+  <div class="form-group mx-auto">
+    <h2 class="text-center">Formulario de Datos</h2>
+    <form @submit.prevent="submitForm" ref="formulario">
+      <div class="row">
+        <div class="form-group col-md-6 text-center">
+          <label for="nombre">Nombre:</label>
+          <input type="text" v-model="nombre" required class="form-control" id="nombre">
+        </div>
+
+        <div class="form-group col-md-6 text-center">
+          <label for="email">Email:</label>
+          <input type="email" v-model="email" required class="form-control" id="email">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-6 text-center">
+          <label for="edad">Edad:</label>
+          <input type="number" v-model="edad" min="0" required class="form-control" id="edad">
+        </div>
+
+        <div class="form-group col-md-6 text-center">
+          <label for="telefono">Teléfono:</label>
+          <input type="tel" v-model="telefono" pattern="[0-9]{10}" required class="form-control" id="telefono">
+        </div>
+      </div>
+
+      <div class="text-center mt-3">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </div>
+
+      <p class="alert alert-success mt-3" v-if="mensajeGuardado">{{ mensajeGuardado }}</p>
+    </form>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'FormularioVue',
+  data() {
+    return {
+      nombre: '',
+      email: '',
+      edad: '',
+      telefono: ''
+    };
+  },
+  methods: {
+    submitForm() {
+      if (this.$refs.formulario.checkValidity()) {
+        this.$emit('form-submit', {
+          nombre: this.nombre,
+          email: this.email,
+          edad: this.edad,
+          telefono: this.telefono
+        });
+        this.resetForm();
       }
+    },
+    resetForm() {
+      this.nombre = '';
+      this.email = '';
+      this.edad = '';
+      this.telefono = '';
     }
-  };
-  </script>
+  }
+};
+</script>
   
   <style>
   .form-input {
