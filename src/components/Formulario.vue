@@ -29,8 +29,6 @@
       <div class="text-center mt-3">
         <button type="submit" class="btn btn-primary">Enviar</button>
       </div>
-
-      <p class="alert alert-success mt-3" v-if="mensajeGuardado">{{ mensajeGuardado }}</p>
     </form>
   </div>
 </template>

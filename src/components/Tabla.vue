@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h2>Datos ingresados:</h2>
+      <h2 class="text-center">Datos ingresados:</h2>
       <table class="table">
         <thead>
           <tr>
